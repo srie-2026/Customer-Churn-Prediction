@@ -12,6 +12,9 @@ This project uses the **IBM Telco Customer Churn dataset**.
 ## c. Github Repository Link
 [Customer Churn Prediction on GitHub](https://github.com/srie-2026/Customer-Churn-Prediction)
 
+## Live Streamlit App Link
+[Customer Churn Prediction App](https://customer-churn-prediction-sri.streamlit.app/)
+
 ## d. Models used
 Five classification models were trained and evaluated. The performance metrics on the test data are summarized below:
 
