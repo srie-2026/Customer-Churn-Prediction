@@ -10,7 +10,7 @@ This project uses the **IBM Telco Customer Churn dataset**.
 - **Target Variable:** `Churn` (Binary: 0 for No Churn, 1 for Yes Churn).
 
 ## c. Github Repository Link
-[ML-Assignment-2 on GitHub](https://github.com/2026aj05-sri/ML-Assignment-2)
+[Customer Churn Prediction on GitHub](https://github.com/srie-2026/Customer-Churn-Prediction)
 
 ## d. Models used
 Five classification models were trained and evaluated. The performance metrics on the test data are summarized below:
