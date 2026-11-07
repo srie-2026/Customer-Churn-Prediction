@@ -25,7 +25,7 @@ The repository contains: `app.py` (Streamlit app), `requirements.txt` (pinned ve
 Upload `test_data.csv`, compare all five models in one table, then pick a model to see its metrics, confusion matrix and classification report. The app loads the saved models and does not retrain.
 
 ## d. Models used
-Five classifiers were trained on the same training split: Logistic Regression (`max_iter=1000`), Decision Tree (`max_depth=6`), K-Nearest Neighbors (`k=5`), Gaussian Naive Bayes, and Support Vector Machine (probability estimates enabled so that AUC can be computed). All metrics below are for the churn class (class 1) on the 1,761 test records.
+Five classifiers were trained on the same training split: Logistic Regression (`max_iter=1000`), Decision Tree (`max_depth=6`), K-Nearest Neighbors (`k=5`), Gaussian Naive Bayes, and a calibrated Support Vector Machine so that AUC can be computed. All metrics below are for the churn class (class 1) on the 1,761 test records.
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -33,7 +33,7 @@ Five classifiers were trained on the same training split: Logistic Regression (`
 | **Decision Tree** | 0.7825 | 0.8110 | 0.6055 | 0.5161 | 0.5572 | 0.4166 |
 | **KNN** | 0.7632 | 0.7752 | 0.5573 | 0.5203 | 0.5382 | 0.3796 |
 | **Naive Bayes** | 0.6917 | 0.8117 | 0.4561 | 0.8458 | 0.5926 | 0.4255 |
-| **Support Vector Machine** | 0.7939 | 0.7974 | 0.6529 | 0.4754 | 0.5502 | 0.4297 |
+| **Support Vector Machine** | 0.7899 | 0.7974 | 0.6622 | 0.4240 | 0.5170 | 0.4067 |
 
 Errors on the 467 actual churners and 1,294 loyal customers in the test set (from the confusion matrices):
 
@@ -43,7 +43,7 @@ Errors on the 467 actual churners and 1,294 loyal customers in the test set (fro
 | Decision Tree | 241 | 226 (48.4%) | 157 (12.1%) |
 | KNN | 243 | 224 (48.0%) | 193 (14.9%) |
 | Naive Bayes | 395 | 72 (15.4%) | 471 (36.4%) |
-| Support Vector Machine | 222 | 245 (52.5%) | 118 (9.1%) |
+| Support Vector Machine | 198 | 269 (57.6%) | 101 (7.8%) |
 
 ## e. Observations
 
@@ -53,5 +53,5 @@ Errors on the 467 actual churners and 1,294 loyal customers in the test set (fro
 | **Decision Tree** | Slightly below Logistic Regression on every metric (accuracy 0.7825, AUC 0.8110, MCC 0.4166). Limiting the depth to 6 keeps it from overfitting and keeps the rules readable, but it still misses 226 churners (48.4%) and gives up some flexibility. |
 | **KNN** | Weakest model on AUC (0.7752), F1 (0.5382) and MCC (0.3796). One-hot encoding turns the many Yes/No service columns into many binary dimensions, which makes distances between customers less informative, and it raises 193 false alarms. |
 | **Naive Bayes** | Lowest accuracy (0.6917), which is even below the 73.5% "always predict No churn" baseline, and the lowest precision (0.4561). But it has by far the highest recall (0.8458, only 72 churners missed) and the highest F1 (0.5926), at the price of 471 false alarms. Its AUC (0.8117) is decent, so it ranks customers well but its decision threshold leans towards predicting churn. The independence assumption does not hold for correlated service columns. Useful only if missing a churner is much costlier than a wasted offer. |
-| **Support Vector Machine** | Second-best accuracy (0.7939) and the highest precision (0.6529) with the fewest false alarms (118), so a churn prediction from it is the most trustworthy. However, it has the lowest recall (0.4754) and misses 245 of 467 churners (52.5%), and its AUC (0.7974) is below Logistic Regression, Naive Bayes and the Decision Tree. |
+| **Support Vector Machine** | Second-best accuracy (0.7899) and the highest precision (0.6622) with the fewest false alarms (101), so a churn prediction from it is the most trustworthy. However, it has the lowest recall (0.4240) and misses 269 of 467 churners (57.6%), and its AUC (0.7974) is below Logistic Regression, Naive Bayes and the Decision Tree. |
 | **Overall, Winner for your dataset?** | **Logistic Regression.** It has the highest accuracy, AUC and MCC, balanced errors, and it is the simplest and fastest model to train and explain. Naive Bayes would only be preferred if the business wanted to catch as many churners as possible regardless of false alarms. |
