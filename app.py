@@ -72,7 +72,8 @@ st.markdown("""
 ### Machine Learning Classification Dashboard
 
 This application evaluates five trained machine learning
-classifiers using the IBM Telco Customer Churn dataset.
+classifiers using the Telco Customer Churn dataset, shared
+on Kaggle by BlastChar and attributed there to IBM Sample Data Sets.
 
 Upload your test CSV file to compare model performance.
 """)

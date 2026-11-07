@@ -4,7 +4,7 @@
 A telecom company loses revenue every time a customer cancels the service, and winning a new customer costs much more than keeping an existing one. The goal of this project is to predict, from a customer's profile, services and billing details, whether the customer will **churn** (leave) or stay. Five classification models are trained on the same data, compared on the same held-out test set with six evaluation metrics, and demonstrated in an interactive Streamlit app. The aim is to identify likely churners early so that the business can target retention offers at them.
 
 ## b. Dataset description
-- **Source:** IBM Telco Customer Churn dataset, a public dataset on Kaggle: [kaggle.com/datasets/blastchar/telco-customer-churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+- **Source:** Telco Customer Churn dataset, shared on Kaggle by BlastChar and attributed there to IBM Sample Data Sets: [kaggle.com/datasets/blastchar/telco-customer-churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 - **Instances:** 7,043 customers. After a stratified split (25% test, `random_state=48`): **5,282 for training** and **1,761 for testing** (`test_data.csv`).
 - **Features:** the original file has 21 columns. The identifier `customerID` was dropped, which leaves **19 input features** and 1 target column.
   - *Customer profile:* `gender`, `SeniorCitizen`, `Partner`, `Dependents`
