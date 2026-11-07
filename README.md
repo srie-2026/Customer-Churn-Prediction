@@ -25,7 +25,7 @@ The repository contains: `app.py` (Streamlit app), `requirements.txt` (pinned ve
 Upload `test_data.csv`, compare all five models in one table, then pick a model to see its metrics, confusion matrix and classification report. The app loads the saved models and does not retrain.
 
 ## d. Models used
-Five classifiers were trained on the same training split: Logistic Regression (`max_iter=1000`), Decision Tree (`max_depth=6`), K-Nearest Neighbors (`k=5`), Gaussian Naive Bayes, and a calibrated Support Vector Machine so that AUC can be computed. All metrics below are for the churn class (class 1) on the 1,761 test records.
+Five classifiers were trained on the same training split: Logistic Regression (`max_iter=1000`), Decision Tree (`max_depth=6`), K-Nearest Neighbors (`k=5`), Gaussian Naive Bayes, and a calibrated Support Vector Machine so that AUC can be computed. All metrics were calculated on the 1,761 test records. Precision, Recall and F1-score are reported for the positive class (Churn = 1), while Accuracy, ROC-AUC and Matthews Correlation Coefficient (MCC) evaluate overall binary classification performance.
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
