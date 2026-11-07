@@ -217,7 +217,7 @@ if uploaded_file is not None:
 
         st.dataframe(
             results_df.style.format("{:.4f}"),
-            use_container_width=True
+            width="stretch"
         )
 
         # --------------------------------------------------
@@ -308,7 +308,7 @@ if uploaded_file is not None:
 
         st.dataframe(
             report_df.style.format("{:.4f}"),
-            use_container_width=True
+            width="stretch"
         )
 
         # --------------------------------------------------
